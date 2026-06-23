@@ -110,8 +110,8 @@ export default function App() {
     const ch = canvas.height;
     ctx.clearRect(0, 0, cw, ch);
     
-    // Crop 48px from the bottom to completely remove the "Veo" watermark
-    const cropBottom = 48;
+    // Crop 80px from the bottom to completely remove the "Veo" watermark in all scenes
+    const cropBottom = 80;
     ctx.drawImage(img, 0, 0, img.width, img.height - cropBottom, 0, 0, cw, ch);
   };
 
