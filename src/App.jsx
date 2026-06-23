@@ -103,13 +103,16 @@ export default function App() {
     };
   }, []);
 
-  // Draw image inside canvas stretching it (since canvas aspect ratio is locked to 16:9, same as video)
+  // Draw image inside canvas stretching it (and cropping bottom to remove watermark)
   const drawImageFit = (ctx, img, canvas) => {
     if (!img) return;
     const cw = canvas.width;
     const ch = canvas.height;
     ctx.clearRect(0, 0, cw, ch);
-    ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, cw, ch);
+    
+    // Crop 48px from the bottom to completely remove the "Veo" watermark
+    const cropBottom = 48;
+    ctx.drawImage(img, 0, 0, img.width, img.height - cropBottom, 0, 0, cw, ch);
   };
 
   // Render a specific frame on a scene canvas
