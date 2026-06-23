@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #00ff88; /* Glowing logistics green */
+  --color-brand-secondary: #00e5ff; /* Cyber cyan */
+  --color-brand-dark: #050508; /* Super dark pitch black background */
+  --font-display: 'Outfit', sans-serif;
+  --font-technical: 'JetBrains Mono', monospace;
+}
+
+:root {
+  color-scheme: dark;
+  background-color: var(--color-brand-dark);
+  color: #e2e8f0;
+  font-family: var(--font-display);
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar to match premium aesthetics */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050508;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a24;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff88;
+}
+
+/* Text selections */
+::selection {
+  background: rgba(0, 255, 136, 0.2);
+  color: #00ff88;
+}
+
+/* 1. Viewport Outer Container (Centering the 16:9 frame on screen) */
+.viewport-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #050508;
+  z-index: 5;
+}
+
+/* 2. Aspect Ratio locked camera frame */
+.canvas-window {
+  position: relative;
+  width: 100vw;
+  height: 56.25vw; /* 9/16 of width */
+  max-width: 177.78vh; /* 16/9 of height */
+  max-height: 100vh;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.95);
+}
+
+/* 3. Vertical Stack containing adjacent scene floors */
+.floor-stack {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+/* 4. Single scene floor container (fits the 16:9 window exactly) */
+.floor-item {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+/* 5. Canvas filling its floor item */
+.canvas-16-9 {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Loading background grid */
+.telemetry-grid {
+  background-image: 
+    radial-gradient(rgba(0, 255, 136, 0.08) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.technical-text {
+  font-family: var(--font-technical);
+  letter-spacing: 0.1em;
+}
+
+.glass-panel {
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
