@@ -8,8 +8,8 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const sceneConfigs = [
   { id: 'cena1', name: 'Cena 1 (Elevador)', count: 192 },
-  { id: 'cena2', name: 'Cena 2 (Embalagem)', count: 240 },
   { id: 'cena3', name: 'Cena 3 (Transporte)', count: 240 },
+  { id: 'cena2', name: 'Cena 2 (Embalagem)', count: 240 },
   { id: 'cena4', name: 'Cena 4 (Caminhão)', count: 240 }
 ];
 
@@ -194,7 +194,7 @@ export default function App() {
         frame1: sceneConfigs[0].count - 1,
         ease: 'none',
         duration: 1.5,
-        onUpdate: () => renderFrame('cena1', Math.floor(animationState.frame1))
+        onUpdate: () => renderFrame(sceneConfigs[0].id, Math.floor(animationState.frame1))
       })
       // 2. Move camera to Scene 2 (pan down)
       .to(stackRef.current, {
@@ -207,7 +207,7 @@ export default function App() {
         frame2: sceneConfigs[1].count - 1,
         ease: 'none',
         duration: 1.5,
-        onUpdate: () => renderFrame('cena2', Math.floor(animationState.frame2))
+        onUpdate: () => renderFrame(sceneConfigs[1].id, Math.floor(animationState.frame2))
       })
       // 4. Move camera to Scene 3
       .to(stackRef.current, {
@@ -220,7 +220,7 @@ export default function App() {
         frame3: sceneConfigs[2].count - 1,
         ease: 'none',
         duration: 1.5,
-        onUpdate: () => renderFrame('cena3', Math.floor(animationState.frame3))
+        onUpdate: () => renderFrame(sceneConfigs[2].id, Math.floor(animationState.frame3))
       })
       // 6. Move camera to Scene 4
       .to(stackRef.current, {
@@ -233,7 +233,7 @@ export default function App() {
         frame4: sceneConfigs[3].count - 1,
         ease: 'none',
         duration: 1.5,
-        onUpdate: () => renderFrame('cena4', Math.floor(animationState.frame4))
+        onUpdate: () => renderFrame(sceneConfigs[3].id, Math.floor(animationState.frame4))
       });
 
   }, { dependencies: [loading, sceneImages], scope: containerRef });
